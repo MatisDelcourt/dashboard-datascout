@@ -1,1 +1,6 @@
 streamlit
+matplotlib
+openpyxl
+plotly
+mplsoccer
+scipy
