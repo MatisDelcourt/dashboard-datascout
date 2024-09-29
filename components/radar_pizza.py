@@ -31,7 +31,7 @@ def calculate_percentiles(df, player_filter, carac_list):
     return values_list
 
 # Charger le CSV
-@st.cache
+# @st.cache
 def load_data(file_path):
     return pd.read_csv(file_path)
 
@@ -42,23 +42,35 @@ def show():
     # Interface utilisateur pour filtrer par ligue et joueur
     st.title("Radar Pizza - Analyse des joueurs")
 
-    # Ajouter l'option "Top 5 européen" et la liste des ligues correspondantes
-    top_5_ligues = ['Angleterre D1', 'Allemagne D1', 'Italie D1', 'France D1', 'Espagne D1']
-    ligues = df['Team'].unique().tolist()
-    
-    # Ajouter l'option "Top 5 européen"
-    ligue_options = ["Toutes", "Top 5 européen"] + ligues
-    ligue_selectionnee = st.selectbox("Sélectionner une ligue", ligue_options)
+    # Utiliser les colonnes pour compacter les inputs
+    col1, col2, col3 = st.columns(3)
 
-    # Filtre sur l'équipe
-    if ligue_selectionnee == "Top 5 européen":
-        equipes = df[df['Team'].isin(top_5_ligues)]['Équipe dans la période sélectionnée'].unique().tolist()
-    elif ligue_selectionnee != "Toutes":
-        equipes = df[df['Team'] == ligue_selectionnee]['Équipe dans la période sélectionnée'].unique().tolist()
-    else:
-        equipes = df['Équipe dans la période sélectionnée'].unique().tolist()
-    
-    equipe_selectionnee = st.selectbox("Sélectionner une équipe", ["Toutes"] + equipes)
+    # Entrée du nombre minimum de minutes jouées dans la première colonne
+    with col1:
+        min_minutes, max_minutes = int(df['Minutes jouées  '].min()), int(df['Minutes jouées  '].max())
+        minutes_selectionnees = st.number_input("Minutes min.", min_value=min_minutes, max_value=max_minutes, value=min_minutes)
+
+    # Filtrer les joueurs en fonction des minutes jouées
+    df = df[df['Minutes jouées  '] >= minutes_selectionnees]
+
+    # Sélection de la ligue dans la deuxième colonne
+    with col2:
+        top_5_ligues = ['Angleterre D1', 'Allemagne D1', 'Italie D1', 'France D1', 'Espagne D1']
+        ligues = df['Team'].unique().tolist()
+        ligue_options = ["Toutes", "Top 5 européen"] + ligues
+        ligue_selectionnee = st.selectbox("Championnat", ligue_options)
+
+    # Sélection de l'équipe dans la troisième colonne
+    with col3:
+        if ligue_selectionnee == "Top 5 européen":
+            equipes = df[df['Team'].isin(top_5_ligues)]['Équipe dans la période sélectionnée'].unique().tolist()
+        elif ligue_selectionnee != "Toutes":
+            equipes = df[df['Team'] == ligue_selectionnee]['Équipe dans la période sélectionnée'].unique().tolist()
+        else:
+            equipes = df['Équipe dans la période sélectionnée'].unique().tolist()
+
+        equipes = sorted(equipes)
+        equipe_selectionnee = st.selectbox("Équipe", ["Toutes"] + equipes)
 
     # Filtrer uniquement la liste des joueurs selon la ligue et l'équipe sélectionnées (sans modifier le DataFrame)
     if ligue_selectionnee == "Top 5 européen" and equipe_selectionnee == "Toutes":
@@ -81,11 +93,38 @@ def show():
         joueurs_echantillon = df
 
     # Sélectionner un joueur
+    joueurs = sorted(joueurs)
     joueur_selectionne = st.selectbox("Sélectionner un joueur", joueurs)
 
     # Filtrer les données pour le joueur sélectionné
     player_filter = (df['Joueur'] == joueur_selectionne)
     player_of_i = df[player_filter]
+    
+    # Lire la colonne Place et extraire le premier poste
+    place = player_of_i['Place'].values[0]
+    premier_poste = place.split(",")[0].strip()  # Séparer par virgule et prendre le premier élément
+
+    # Filtrer l'échantillon de joueurs en fonction du premier poste
+    joueurs_echantillon['Premier poste'] = joueurs_echantillon['Place'].apply(lambda x: x.split(",")[0].strip())
+
+    if premier_poste in ["CF"]:
+        postes_to_compare = 'Buteurs'
+        joueurs_echantillon = joueurs_echantillon[joueurs_echantillon['Premier poste'] == 'CF']
+    elif premier_poste in ["LW", "LWF", "LAMF", "RW", "RWF", "RAMF"]:
+        postes_to_compare = 'Ailiers'
+        joueurs_echantillon = joueurs_echantillon[joueurs_echantillon['Premier poste'].isin(['LW', 'LWF', 'LAMF', 'RW', 'RWF', 'RAMF'])]
+    elif premier_poste in ["AMF", "LCMF", "RCMF"]:
+        postes_to_compare = 'Milieux offensifs'
+        joueurs_echantillon = joueurs_echantillon[joueurs_echantillon['Premier poste'].isin(['AMF', 'LCMF', 'RCMF'])]
+    elif premier_poste in ["DMF", "LDMF", "RDMF", "LCMF", "RCMF"]:
+        postes_to_compare = 'Milieux centraux'
+        joueurs_echantillon = joueurs_echantillon[joueurs_echantillon['Premier poste'].isin(['DMF', 'LDMF', 'RDMF', 'LCMF', 'RCMF'])]
+    elif premier_poste in ["LWB", "LB", "RWB", "RB"]:
+        postes_to_compare = 'Latéraux'
+        joueurs_echantillon = joueurs_echantillon[joueurs_echantillon['Premier poste'].isin(['LWB', 'LB', 'RWB', 'RB'])]
+    elif premier_poste in ["CB", "LCB", "RCB"]:  
+        postes_to_compare = 'Défenseurs centraux'  
+        joueurs_echantillon = joueurs_echantillon[joueurs_echantillon['Premier poste'].isin(['CB', 'LCB', 'RCB'])]
 
     # Liste des caractéristiques à afficher dans le radar pizza
     carac_list = ["xA par 90",
@@ -161,5 +200,6 @@ def show():
     st.pyplot(fig)
 
     # Afficher la légende sous le graphique
-    st.markdown(f"**Référentiel de comparaison :** {ligue_selectionnee if ligue_selectionnee != 'Toutes' else 'Toutes les ligues'}")
+    st.markdown(f"**Référentiel de comparaison :** {postes_to_compare} - {ligue_selectionnee if ligue_selectionnee != 'Toutes' else 'Toutes les ligues'}")
     st.markdown(f"**Nombre de joueurs dans l'échantillon :** {len(joueurs_echantillon)}")
+    st.markdown(f"**Nombre minimum de minutes jouées :** {minutes_selectionnees} minutes")
