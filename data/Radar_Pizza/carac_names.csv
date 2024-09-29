@@ -25,8 +25,8 @@ Stp%,% de centres stoppés
 AvgDist,Distance moyenne du but
 CS,Clean Sheets
 CS%,% de Clean Sheets
-Saves,Arrêts
-Save%,% d’arrêts
+Saves,Arréts
+Save%,% d'arréts
 SoTA,Tirs cadrés subis
 xA,PD attendues
 A-xA,Différence entre PD réalisées et attendues
@@ -78,8 +78,8 @@ Lcmp%,% Passes Longues Réussies
 Drib, Dribble menant à un tir
 #Pl, Joueurs dribblés
 xG par 90, Buts attendus
-xA par 90, Passes décisives attendues
-Buts de la tête par 90, Buts de la tête
+xA par 90, PD attendues
+Buts de la téte par 90, Buts de la téte
 Passes décisives par 90, Passes décisives
 Buts par 90, Buts
 Dribbles par 90, Dribbles
@@ -91,8 +91,8 @@ Duels offensifs par 90, Duels offensifs
 Touches de balle dans la surface de réparation sur 90, Touches dans la surface
 Fautes subies par 90, Fautes subies
 Passes par 90, Passes
-Actions défensives réussies par 90, Actions défensives réussies
-Duels aériens gagnés%, % de Duels aériens gagnés
+Actions défensives réussies par 90, Actions déf. réussies
+Duels aériens gagnés%, % duels aér. gagnés
 Tacles glissés par 90, Tacles glissés
 Tirs bloqués par 90, Tirs bloqués
 Interceptions par 90, Interceptions
@@ -104,15 +104,17 @@ Passes par 90, Passes
 Passes avant par 90, Passes vers l'avant
 Tacles glissés PAdj, Tacles glissés
 Interceptions PAdj, Interceptions
-Duels défensifs gagnés%, Duels défensifs gagnés %
-Duels aériens gagnés%, Duels aériens gagnés %
+Duels défensifs gagnés%, % de duels déf. gagnés
+Duels aériens gagnés%, % de duels aér. gagnés
+Duels défensifs gagnés. %, % de duels déf. gagnés
+Duels aériens gagnés. %, % de duels aér. gagnés
 Passes vers la surface de réparation par 90, Passes vers la surface
 Passes quasi décisives par 90, Passes clés
 Tirs par 90, Tirs
 SuccDef, Actions défensives réussies
-DefDuels, Pourcentage de duels défensifs gagnés
+DefDuels, Pourcentage de duels déf. gagnés
 AerWon, Pourcentage de duels aériens gagnés
-Tkl, Tacles glissés
+Tkl, Tacles
 Blk, Tirs bloqués
 Int, Interceptions
 Prog, Passes progressives
@@ -125,14 +127,14 @@ Crosses, Centres
 Drib, Dribbles
 PenAreaTouches, Ballons touchés dans la surface
 Run, Courses vers l'avant
-Passes, Pourcentage de passes réussies
+Passes, Précision des passes
 xA, xA
-ShAst, Passes amenant à un tir
+ShAst, Passes amenant é un tir
 KP, Passes clés
 PenPasses, Passes dans la surface adverse
 Shots, Tirs
 Gls, Buts
-HeadGls, Buts de la tête
+HeadGls, Buts de la téte
 GoalConv, Pourcentage de conversion de but
 Ast, Passes décisives
 OffDuels, Duels offensifs
@@ -152,118 +154,182 @@ Acc, Accélérations
 PasseRec, Passes réceptionnées
 PasseProf, Passes en profondeur
 Duels défensifs par 90, Duels défensifs
-Passes quasi décisives par 90, Passes quasi décisives
 Centres par 90, Centres
 Duels aériens par 90, Duels aériens
-Passes judicieuses par 90, Passes clés
-Fouls, Fautes subies
-Header, Buts de la tête
-Aerien, Duels aériens
-Passes réceptionnées par 90, Passes réceptionnées
-Centres du flanc gauche par 90, Centres du flanc gauche
-Сentres du flanc gauche précises%, Centres du flanc gauche réussis %
-Centres dans la surface de but par 90, Centres dans la surface
 Passes longues par 90, Passes longues
-FoulsDone, Absence de fautes
-Pass, Passes par 90
-Attaques réussies par 90, Actions offensives réussies
-Réalisations en profondeur par 90, Passes en profondeur
-SuccDef, Actions défensives réussies
-DefDuels, Pourcentage de duels défensifs gagnés
-AerWon, Pourcentage de duels aériens gagnés
-Tkl, Tacles glissés
-Blk, Tirs bloqués
-Int, Interceptions
-Prog, Passes progressives
-Lg, Passes longues
-Length, Distance moyenne des passes longues (m)
-Third, Passes dans le dernier tiers
-SuccOff, Actions offensives réussies
-xG, xG
-Crosses, Centres
-Drib, Dribbles
-PenAreaTouches, Ballons touchés dans la surface
-Run, Courses vers l'avant
-Passes, Pourcentage de passes réussies
-xA, xA
-ShAst, Passes amenant à un tir
-KP, Passes clés
-PenPasses, Passes dans la surface adverse
-Shots, Tirs
-Gls, Buts
-HeadGls, Buts de la téte
-GoalConv, Pourcentage de conversion de but
-Ast, Passes décisives
-OffDuels, Duels offensifs
-OffWon, Pourcentage de duels offensifs réussis 
-Acc, Accélérations
-Diff, Différentiel xG-Buts
-AccPasses, Pourcentage de passes réussies
-LgPass, Passes longues
-AerWons, Pourcentage de duels aériens gagnés
-DefWons, Pourcentage de duels défensifs gagnés
-Through, Passes pénétrantes
-Lg%, Pourcentage de passes longues réussies
-Duel%, Pourcentage de duels réussis
-TklPAdj, Tacles glissés
-IntPAdj, Interceptions
-Cross, Centres
-npG, Buts hors penalty
-Shots, Tirs
-ShCad%, Pourcentage de tirs cadrés
-Recept, Passes réceptionnées
-Head, Buts de la téte
-Forward, Passes avant
-DS, Actions décisives
-PreAst, Passes précédant une passe décisive
-TouchBox, Touches de balle dans la surface
-Fouled, Fautes subies
+Passes précises. %, % de passes réussies
+Passes décisives avec tir par 90, Passes amenant à un tir
+Passes pénétrantes par 90, Passes pénétrantes
+Passes judicieuses par 90, Passes clés
+Dribbles par 90, Dribbles
 BoxPasses, Passes vers la surface
-GA, Buts concédés 
-xGA, xG contre 
-ButsEvites, Buts évités 
-TirsContre, Tirs subis
-CS, Clean Sheet
-Save, % d'arréts
-Sorties, Sorties réussies
-AerDuels, Duels aériens 
-Tkl+Int, Tacles & Interceptions
-Pass, Passes
-Lateral, Passes latérales
-Taux, Taux de conversion but/tir
+Passes progressives précises. %, % de passes progressives réussies
+Actions décisives, Actions décisives
+Actions décisives attendues, Actions décisives attendues
+Attaques réussies par 90, Actions offensives réussies
+Taux de conversion, Taux de conversion
+Secondes passes décisives par 90, 2nde passes décisives
+Сentres précises. %, Précision des centres
+Centre%, Précision des centres
+Tirs à la cible. %, % de tirs cadrés
+Dribbles réussis. %, % de dribbles réussis 
+Passes arriére par 90, Passes arriére
+Passes latérales par 90, Passes latérales
+Longues passes précises. %, % des passes longues réussies
+Réalisations en profondeur par 90, Réalisations en profondeur
+Duels par 90, Duels joués
+Duels gagnés. %, % de duels gagnés
+Tirs contrés par 90, Tirs contrés
+Buts concédés par 90, Buts concédés
+xG contre par 90, xG concédés
+Tirs contre par 90, Tirs subis
+Enregistrer. %, % d'arréts
+Clean Sheet. %, % de Clean Sheet
+Sorties par 90, Sorties
+Duels aériens par 90, Duels aériens
+Buts évités par 90, Buts évités
+xGA-GA, Différentiel xG contre/Buts encaissés
+Taux de conversion but/tir, Taux de conversion
+Fautes par 90, Fautes
+Précision Centres,% de centres réussis
+Prog, Passes progressives réussies
+Cross, Centres réussis
+Drib, Dribbles réussis
+Long, Passes longues réussies
+Box, Passes vers la surface réussies
+Duels défensifs, Duels déf. gagnés
+Duels aériens, Duels aér. gagnés
+Passes réussies, Passes réussies
+Duels de marquage. %, Duels de marquage
+Centres réussis, Centres réussis
+Dribbles réussis, Dribbles réussis
+Duels gagnés%, % de duels gagnés
+Duels défensifs gagnés, Duels défensifs
+Duels défensifs gagnés par 90, Duels défensifs gagnés
+Terrain gagné, Gain de terrain
+Duels aériens gagnés, Duels aériens
+G-xG, Finition (G-xG)
+Recept, Passes réceptionnées
+Touches de balle dans la surface de réparation sur 90, Présence dans la surface
+Passes dangereuses, Passes dangereuses
+Passes risquées, Passes risquées
+Duels offensifs, Duels offensifs gagnés
+Passes dernier tiers, Passes dernier tiers
+Taux, Taux de conversion
+ForwardPass, Passes vers l'avant réussies
+Passes vers l'avant réussies, Passes vers l'avant réussies
+Passes dernier tiers réussies, Passes dernier tiers réussies
+ThirdPass, Passes dernier tiers
+ProgPass, Passes prog. réussies
+Passes progressives réussies, Passes prog. réussies
+BoxPass, Passes vers la surface
+Passes vers la surface réussies, Passes vers la surface réussies
+Passes réceptionnées par 90, Passes réceptionnées
+ThroughPass, Passes pénétrantes réussies
+LgPass%, % de passes longues réussies
+Off%, % de duels offensifs gagnés
+Fouled, Fautes subies
+TouchBox, Touches dans la surface
+23Ast, Passes amenant à une PD
 Smart, Passes intelligentes
-Foul, Fautes commises
-Yellow, Cartons jaunes
-Red, Cartons rouges
-Forward%, % de réussite passes avant
-Back, Passes arriére
-Back%, % de réussite passes arrière
-Lateral%, % de réussite passes latérales
-Short, Passes courtes
-Short%, % de réussite passes courtes
-LgPass%, % de réussite passes longues
-Longueur, Longueur des passes
-Longueur2, Longueur des passes longues
-3Ast, 3éme passes décisives
-Smart%, % de réussite passes intelligentes
-Third%, % de réussite passes dans le dernier tiers
-BoxPasses%, % de réussite passes surface
-Through%, % de réussite passes pénétrantes
-Deep, Réalisations en profondeur
+Cross%, % de centres réussis
 Deep2, Centres en profondeur
-Prog%, % de réussite passes progressives
-Drib%, % de réussite dribbles
-Cross%, % de réussite centres
-LeftCross, Centres flanc gauche
-RightCross, Centres flanc droit
-RightCross%, % de réussite centre droit
-LeftCross%, % de réussite centre gauche
-BoxCross, centres surface
-BoxCross%, % de réussite centre surface
-Goals, Buts
+ShCad%, % de tirs cadrés
+Actions décisives par 90, Actions décisives
+Proportion passe avant, Proportion passes avant
+Dribbles réussis, Dribbles réussis
+Passes en profondeur, Passes en profondeur
+Passes dans la surface, Passes dans la surface
+Touches de balle, Touches de balle
+Fautes provoquées, Fautes provoquées
+Actions menant é un tir, Actions menant é un tir
+Passes longues réussies, Passes longues réussies
+Tirs cadrés, Tirs cadrés
+Passes progressives, Passes progressives
+Tacles Zoff, Tacles en zone offensive
+Chevauchées dans la surface, Chevauchées dans la surface
+% passes réussies, % de passes réussies
+Chevauchées dernier tiers, Chevauchées dans dernier tiers
+Tacles + interceptions, Tacles + Interceptions
+Passes clés, Passes clés
+Dribbleurs taclés, Dribbleurs taclés
+Courses progressives, Courses progressives
+Centres, Centres
+Passes progressives reéues, Passes progressives reéues
+Transversales, Transversales
+Actions menant é un but, Actions menant é un but
+Proportion passes vers la surface de réparation, Proportion passes vers la surface
+Proportion passes dangereuses, Proportion passes dangereuses
+Cartons rouges par 90, Cartons rouges
 OffDuel, Duels offensifs
-Off%, % de réussite duels offensifs
-LgRecept, Passes longues réceptionnées
-xDS, Actions décisives attendues
-DiffA, Différentiel xA-Assists
-DiffB, Différentiel xG-Buts
+Off%, % de duels offensifs gagnés
+Proportion passes avant, Proportion passes avant
+Proportion passes arrières, Proportion passes arrière
+Proportion passes latérales, Proportion passes latérales
+Proportion passes risquées, Proportion passes risquées
+Proportion passes derniers tiers, Proportion passes dernier tiers
+Head, Buts de la téte
+Actions tentées, Actions tentées
+Actions réussies, Actions réussies
+But, Buts
+Passe décisive, P.D
+Tirs, Tirs
+Tirs cadrés, Tirs cadrés
+xG, xG
+Passes tentées, Passes tentées
+Passes réussies, Passes réussies
+Passes longues, Passes longues
+Passes longues réussies, Passes longues réussies
+Centres, Centres
+Centres réussis, Centres réussis
+Dribbles, Dribbles
+Dribbles réussis, Dribbles réussis
+Duels, Duels
+Duels gagnés, Duels gagnés
+Duels aériens, Duels aériens
+Duels aériens gagnés, Duels aér. Gagnés
+Interceptions, Interceptions
+Pertes de balle, Pertes de balle
+Récupérations, Récupérations
+Pertes de balle propre terrain, Pertes propre terrain
+Récupérations terrain adverse, Récup. Terrain adverse
+Duels défensifs, Duels défensifs
+Duels défensifs gagnés, Duels déf. Gagnés
+Duels ballons perdus, Duels ballons perdus
+Duels ballons gagnés, Duels ballons gagnés
+Tacles glissés, Tacles glissés
+Tacles glissés réussis, Tacles glissés réussis
+Dégagements, Dégagements
+Faute, Fautes
+Cartons jaunes, Cartons jaunes
+Cartons rouges, Cartons rouges
+Cartons reçus, Cartons reçus
+Passes décisives avec tir, Passes amenant é un tir
+Duels offensifs, Duels offensifs
+Duels offensifs gagnés, Duels off. Gagnés
+Touches de balle dans la surface de réparation, Touches dans la surface
+Hors-jeu, Hors-jeu
+Courses progressives, Courses progressives
+Fautes subies, Fautes subies
+Passes en profondeur, Passes en profondeur
+Passes en profondeur réussies, Passes en prof. Réussies
+xA, xA
+Secondes passes décisives, 2nde passes décisives
+Passes dans 3éme tiers, Passes dernier tiers
+Passes dans 3éme tiers réussies, Passes dernier 1/3 réussies
+Passes vers la surface de réparation, Passes vers surface
+Passes réceptionnées, Passes réceptionnées
+Passes en avant, Passes en avant
+Passes en avant réussies, Passes avant réussies
+Passes arriére, Passes arriére
+Passes arriére réussies, Passes arriére réussies
+Passes vers la surface de réparation réussies, Passes vers surface réussies
+Proportion passes longues, Proportion passes longues
+Arréts%, % d'arréts
+CS%, % de clean sheets
+ArrétsPen%, % de penaltys arrétés
+PSxG+/- /90, Buts évités (PSxG +/-)
+LongMoy, Longueur moy des passes (m)
+LongMoy6m, Longueur moy des 6 métres (m)
+CentresStp%, % de centres stoppés
+DistMoySorties, Distance moy des interventions
