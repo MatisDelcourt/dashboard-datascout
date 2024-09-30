@@ -1,5 +1,6 @@
 import pandas as pd
 from functions.radar import Radar
+import streamlit as st
 
 def prepare_carac(df):
     # Défense
@@ -145,8 +146,153 @@ def prepare_radar_formatting(name, championnat, df_interet):
 
     return title_name, subtitle_name, file_name
 
+# Fonction pour générer la liste des équipes en fonction de la ligue sélectionnée
+def get_teams(df, ligue_selectionnee, top_5_ligues):
+    if ligue_selectionnee == "Top 5 européen":
+        # equipes = df[df['Team'].isin(top_5_ligues)]['Équipe dans la période sélectionnée'].unique().tolist()
+        equipes = df.loc[df['Team'].isin(top_5_ligues), 'Équipe dans la période sélectionnée'].unique().tolist()
+
+    elif ligue_selectionnee != "Toutes":
+        equipes = df[df['Team'] == ligue_selectionnee]['Équipe dans la période sélectionnée'].unique().tolist()
+    else:
+        equipes = df['Équipe dans la période sélectionnée'].unique().tolist()
+    return sorted(equipes)
+
+# Gestion des filtres de ligue, équipe et joueurs
+def filter_inputs(df, top_5_ligues):
+    col1, col2, col3 = st.columns(3)
+
+    with col1:
+        min_minutes, max_minutes = int(df['Minutes jouées  '].min()), int(df['Minutes jouées  '].max())
+        minutes_selectionnees = st.number_input("Minutes min.", min_value=min_minutes, max_value=max_minutes, value=min_minutes)
+
+    df = df[df['Minutes jouées  '] >= minutes_selectionnees]
+
+    with col2:
+        ligues = df['Team'].unique().tolist()
+        ligue_options = ["Toutes les ligues", "Top 5 européen"] + ligues
+        ligue_selectionnee = st.selectbox("Championnat", ligue_options)
+
+        if ligue_selectionnee == "Toutes les ligues":
+            df = df  # Ne pas filtrer, retourner tout le DataFrame
+        elif ligue_selectionnee == "Top 5 européen":
+            df = df[df['Team'].isin(top_5_ligues)]  # Filtrer les équipes du Top 5
+        else:
+            df = df[df['Team'] == ligue_selectionnee]  # Filtrer selon la ligue sélectionnée
+
+    with col3:
+        # Ajout du filtre sur l'âge avec un slider (supposant que la colonne "Age" existe)
+        min_age = int(df["Âge"].min())  # Age minimal présent dans les données
+        max_age = int(df["Âge"].max())  # Age maximal présent dans les données
+        age_range = st.slider("Sélectionnez la tranche d'âge", min_value=min_age, max_value=max_age, value=(min_age, max_age))
+
+        # Filtrage du DataFrame par âge
+        df = df[(df["Âge"] >= age_range[0]) & (df["Âge"] <= age_range[1])]
+
+    return df, ligue_selectionnee, minutes_selectionnees
+
+# Fonction pour filtrer les joueurs selon la ligue et l'équipe sélectionnée
+def filter_players(df, ligue_selectionnee, equipe_selectionnee, top_5_ligues):
+    if ligue_selectionnee == "Top 5 européen" and equipe_selectionnee == "Toutes":
+        joueurs = df[df['Team'].isin(top_5_ligues)]['Joueur'].unique().tolist()
+        joueurs_echantillon = df[df['Team'].isin(top_5_ligues)]
+    elif ligue_selectionnee == "Top 5 européen" and equipe_selectionnee != "Toutes":
+        joueurs = df[(df['Team'].isin(top_5_ligues)) & (df['Équipe dans la période sélectionnée'] == equipe_selectionnee)]['Joueur'].unique().tolist()
+        joueurs_echantillon = df[(df['Team'].isin(top_5_ligues))]
+    elif ligue_selectionnee != "Toutes les ligues" and equipe_selectionnee == "Toutes":
+        joueurs = df[df['Team'] == ligue_selectionnee]['Joueur'].unique().tolist()
+        joueurs_echantillon = df[df['Team'] == ligue_selectionnee]
+    elif ligue_selectionnee != "Toutes les ligues" and equipe_selectionnee != "Toutes":
+        joueurs = df[(df['Team'] == ligue_selectionnee) & (df['Équipe dans la période sélectionnée'] == equipe_selectionnee)]['Joueur'].unique().tolist()
+        joueurs_echantillon = df[(df['Team'] == ligue_selectionnee)]
+    elif equipe_selectionnee != "Toutes":
+        joueurs = df[df['Équipe dans la période sélectionnée'] == equipe_selectionnee]['Joueur'].unique().tolist()
+        joueurs_echantillon = df
+    else:
+        joueurs = df['Joueur'].unique().tolist()
+        joueurs_echantillon = df
+    return sorted(joueurs), joueurs_echantillon
+
+# Fonction pour filtrer les joueurs par poste
+def filter_by_position(df):
+
+    # Sélection du poste
+    postes_options = ["Tous", "Défenseurs centraux", "Latéraux", "Milieux centraux", "Milieux offensifs", "Ailiers", "Buteurs"]
+    poste_selectionne = st.selectbox("Sélectionner un poste", postes_options)
+
+    df['Premier poste'] = df['Place'].apply(lambda x: x.split(",")[0].strip())
+    
+    if poste_selectionne == "Buteurs":
+        return df[df['Premier poste'] == 'CF'], poste_selectionne
+    elif poste_selectionne == "Ailiers":
+        return df[df['Premier poste'].isin(['LW', 'LWF', 'LAMF', 'RW', 'RWF', 'RAMF'])], poste_selectionne
+    elif poste_selectionne == "Milieux offensifs":
+        return df[df['Premier poste'].isin(['AMF', 'LCMF', 'RCMF'])], poste_selectionne
+    elif poste_selectionne == "Milieux centraux":
+        return df[df['Premier poste'].isin(['DMF', 'LDMF', 'RDMF', 'LCMF', 'RCMF'])], poste_selectionne
+    elif poste_selectionne == "Latéraux":
+        return df[df['Premier poste'].isin(['LWB', 'LB', 'RWB', 'RB'])], poste_selectionne
+    elif poste_selectionne == "Défenseurs centraux":
+        return df[df['Premier poste'].isin(['CB', 'LCB', 'RCB'])], poste_selectionne
+    else:
+        return df, poste_selectionne  # Si aucun poste n'est sélectionné, retourner tout le DataFrame
+
+# Dictionnaire pour renommer les caractéristiques dans l'interface utilisateur
+ui_rename_dict = {
+    "23Ast": "Passes amenant à une PD",
+    "Buts par 90": "Buts",
+    "Passes décisives par 90": "Passes décisives",
+    "Passes décisives avec tir par 90": "Passes amenant à un tir",
+    "Tirs à la cible. %": "Tirs cadrés %",
+    "xA par 90": "xA",
+    "Tirs par 90": "Tirs",
+    "xG par 90": "xG",
+    "Сentres précises. %": "Précision des centres %",
+
+    "Accélérations par 90": "Accélérations",
+    "Attaques réussies par 90": "Actions offensives réussies",
+    "Courses progressives par 90": "Courses progressives",
+    "Dribbles réussis. %": "Réussite des dribbles %",
+    "Duels de marquage. %": "Réussite des duels offensifs %",
+    "Fautes subies par 90": "Fautes subies",
+    "Touches de balle dans la surface de réparation sur 90": "Touches de balle dans la surface",
+
+    "Actions défensives réussies par 90": "Actions défensives réussies",
+    "Fautes par 90": "Fautes commises",
+    "Tirs contrés par 90": "Tirs contrés",
+
+    "Longues passes précises. %": "Précision passes longues %",
+    "Passes précises. %": "Précision passes %",
+    "Passes réceptionnées par 90": "Passes réceptionnées",
+}
+
+# Gérer la sélection des templates et des caractéristiques personnalisées
+def select_template(templates, ui_rename_dict):
+    template_selectionnee = st.selectbox("Sélectionner un template", list(templates.keys()))
+
+    if template_selectionnee == "Custom":
+        st.write("Sélectionnez les caractéristiques que vous souhaitez afficher :")
+        carac_selectionnees = []
+
+        for category, carac_list in templates.items():
+            if category != "Custom":
+                with st.expander(category):
+                    check_all = st.checkbox(f"Tout cocher {category}", key=f'check_all_{category}', value=False)
+                    cols = st.columns(3)
+                    for idx, carac in enumerate(sorted(carac_list)):
+                        ui_label = ui_rename_dict.get(carac, carac)
+                        with cols[idx % 3]:
+                            checked = check_all or (category == "Danger" and idx < 5)
+                            if st.checkbox(ui_label, key=f'custom_{carac}', value=checked):
+                                carac_selectionnees.append(carac)
+        carac_list = carac_selectionnees
+    else:
+        carac_list = templates[template_selectionnee]
+    
+    return carac_list
+
 def double_graph(df, name_1, name_2, carac, championnat, minimum_minutes,
-                 couleur_dominante_1, couleur_dominante_2, mode, black_version):
+                 couleur_dominante_1, couleur_dominante_2, postes, black_version):
     df_interet_1, df_all = choose_carac_and_player(df, name_1, carac, minimum_minutes)
     df_interet_2, df_all = choose_carac_and_player(df, name_2, carac, minimum_minutes)
 
@@ -196,20 +342,18 @@ def double_graph(df, name_1, name_2, carac, championnat, minimum_minutes,
     )
     endnote = "Visualisation réalisée par Data'Scout @datascout_\n" \
               " Data/90mins, >" + str(minimum_minutes) + "mins\n" \
-              "Milieux du top 5 européen\n Source : Wyscout"
+              + postes + " - " + championnat + "\n Source : Wyscout"
 
     if black_version:
         radar = Radar(fontfamily="Liberation Serif", background_color="#121212", patch_color="#28252C",
                       label_color="#FFFFFF",
                       range_color="#FFFFFF", label_fontsize=9, range_fontsize=8)
         end_color = "#95919B"
-        file_name = "images/" + name_1 + " vs " + name_2 + "_black_" + mode + ".jpg"
     else:
         radar = Radar(fontfamily="Liberation Serif", background_color="#FFFFFF", patch_color="#D6D6D6",
                       label_color="#000000",
                       range_color="#000000", label_fontsize=9, range_fontsize=8)
         end_color = "#000000"
-        file_name = "images/" + name_1 + " vs " + name_2 + "_white_" + mode + ".jpg"
 
     fig, ax = radar.plot_radar(ranges=ranges_1, params=params_1, values=values,
                              radar_color=[couleur_dominante_1, couleur_dominante_2],
