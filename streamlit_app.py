@@ -3,7 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 
-from components import accueil, index_performance, radar_pizza
+from components import accueil, index_performance, radar_pizza, scatter_plot
 
 # Barre latérale pour la navigation
 st.sidebar.title("Navigation")
@@ -20,3 +20,6 @@ elif selection == "Index de performance":
 
 elif selection == "Radar Pizza":
     radar_pizza.show()
+
+elif selection == "Scatter Plot":
+    scatter_plot.show()
