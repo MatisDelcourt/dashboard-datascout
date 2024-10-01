@@ -20,17 +20,37 @@ def show():
 
     df = prepare_carac(df_filtered)
 
+    # Trier les joueurs par ordre alphabétique
+    joueurs_tries = sorted(df['Joueur'].unique())
+
     col1, col2 = st.columns(2)
 
     # Sélection du joueur 1 et sa couleur
     with col1:
-        joueur_1 = st.selectbox("Sélectionner le joueur 1", df['Joueur'].unique(), key="joueur_1")
-        joueur_2 = st.selectbox("Sélectionner le joueur 2", df['Joueur'].unique(), key="joueur_2")
+        joueur_1 = st.selectbox("Sélectionner le joueur 1", joueurs_tries, key="joueur_1")
+        joueur_2_option = st.radio("Comparer à", ["Joueur spécifique", "Joueur médian"], key="joueur_2_option")
 
-    # Sélection du joueur 2 et sa couleur
+    # Sélection du joueur 2 ou du joueur médian
+    if joueur_2_option == "Joueur spécifique":
+        joueur_2 = st.selectbox("Sélectionner le joueur 2", joueurs_tries, key="joueur_2")
+    else:
+        # Calculer le joueur médian en fonction des caractéristiques
+        joueur_2 = "Joueur médian"
+
     with col2:
+        # Couleur pour le joueur 1 et joueur 2
         couleur_joueur_1 = st.color_picker("Couleur du joueur 1", "#0000FF")  # Couleur bleue par défaut
         couleur_joueur_2 = st.color_picker("Couleur du joueur 2", "#FF0000")  # Couleur rouge par défaut
+
+    # Sélection du joueur 1 et sa couleur
+    #with col1:
+    #    joueur_1 = st.selectbox("Sélectionner le joueur 1", df['Joueur'].unique(), key="joueur_1")
+    #    joueur_2 = st.selectbox("Sélectionner le joueur 2", df['Joueur'].unique(), key="joueur_2")
+
+    # Sélection du joueur 2 et sa couleur
+    #with col2:
+    #    couleur_joueur_1 = st.color_picker("Couleur du joueur 1", "#0000FF")  # Couleur bleue par défaut
+    #    couleur_joueur_2 = st.color_picker("Couleur du joueur 2", "#FF0000")  # Couleur rouge par défaut
 
 
     # Définir les templates
@@ -58,6 +78,29 @@ def show():
     templates["Custom"] = "Personnalisé"
 
     carac_list = select_template(templates, ui_rename_dict)
+
+    # Si le joueur 2 est le joueur médian, calculer les caractéristiques médianes
+    # Si le joueur 2 est le joueur médian, calculer les caractéristiques médianes
+    if joueur_2 == "Joueur médian":
+        # Sélectionner toutes les colonnes numériques
+        numeric_columns = df.select_dtypes(include=['float64', 'int64']).columns
+
+        # Calculer les valeurs médianes pour toutes les colonnes numériques
+        median_values = df[numeric_columns].median().to_dict()
+
+        # Ajouter des valeurs spécifiques pour les autres colonnes non numériques
+        median_values['Joueur'] = "Joueur médian"
+        median_values['Équipe dans la période sélectionnée'] = ligue_selectionnee
+        median_values['Équipe'] = ligue_selectionnee
+        median_values['Place'] = "CF"  # Valeur par défaut pour Place
+
+        # Créer un DataFrame avec une seule ligne pour le joueur médian
+        median_row = pd.DataFrame([median_values])
+
+        # Ajouter le joueur médian au DataFrame
+        df = pd.concat([df, median_row], ignore_index=True)
+
+        joueur_2 = "Joueur médian"  # Mettre à jour le nom du joueur 2 pour l'affichage
 
     # Générer et afficher le radar
     fig = double_graph(

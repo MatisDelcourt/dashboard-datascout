@@ -104,7 +104,7 @@ def prepare_radar_data(df_interet, quantiles):
         parameter = carac_abbreviation_to_real_name(i[0])
         params.append(parameter)
         ranges.append((float(i[1]), float(i[2])))
-        print(i)
+        st.write()
         values.append(float(df_interet[i[0]].values[0]))
     return params, ranges, values
 
