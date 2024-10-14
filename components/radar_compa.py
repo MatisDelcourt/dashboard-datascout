@@ -5,7 +5,7 @@ from functions.functions_radar_compa import double_graph, prepare_carac, filter_
 
 def show():
     # Charger les données des joueurs
-    df = pd.read_csv('data/Monde.csv')
+    df = pd.read_csv('data/Monde_2024.csv')
 
     # Interface utilisateur pour sélectionner deux joueurs
     st.title("Radar Comparaison - Analyse des joueurs")

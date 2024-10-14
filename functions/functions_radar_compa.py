@@ -302,6 +302,17 @@ def double_graph(df, name_1, name_2, carac, championnat, minimum_minutes,
 
     values = [values_1, values_2]
 
+    # Ajuster la taille de la police des étiquettes en fonction du nombre de catégories
+    num_categories = len(params_1)
+    if num_categories <= 10:
+        label_fontsize = 12
+    elif 11 <= num_categories <= 14:
+        label_fontsize = 11
+    elif 15 <= num_categories <= 18:
+        label_fontsize = 10
+    else:
+        label_fontsize = 9
+
     _, subtitle_name_1, file_name_1 = prepare_radar_formatting(name_1, championnat, df_interet_1)
     _, subtitle_name_2, file_name_2 = prepare_radar_formatting(name_2, championnat, df_interet_1)
 
@@ -347,17 +358,17 @@ def double_graph(df, name_1, name_2, carac, championnat, minimum_minutes,
     if black_version:
         radar = Radar(fontfamily="Liberation Serif", background_color="#121212", patch_color="#28252C",
                       label_color="#FFFFFF",
-                      range_color="#FFFFFF", label_fontsize=9, range_fontsize=8)
+                      range_color="#FFFFFF", label_fontsize=label_fontsize, range_fontsize=8)
         end_color = "#95919B"
     else:
         radar = Radar(fontfamily="Liberation Serif", background_color="#FFFFFF", patch_color="#D6D6D6",
                       label_color="#000000",
-                      range_color="#000000", label_fontsize=9, range_fontsize=8)
+                      range_color="#000000", label_fontsize=label_fontsize, range_fontsize=8)
         end_color = "#000000"
 
     fig, ax = radar.plot_radar(ranges=ranges_1, params=params_1, values=values,
                              radar_color=[couleur_dominante_1, couleur_dominante_2],
-                             title=title, alphas=[0.6, 0.6], endnote=endnote, end_color=end_color, end_size=8,
+                             title=title, alphas=[0.7, 0.5], endnote=endnote, end_color=end_color, end_size=8,
                              compare=True,
                              logo="data/input_images/logo_noir.png", logo_coord=[0.4125, 0.4025, 0.2, 0.15],
                              image_1="data/input_images/lateral.png", image_coord_1=[0.32, 0.79, 0.04, 0.1],

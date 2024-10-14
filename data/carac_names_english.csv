@@ -1,0 +1,184 @@
+xA,Expected Assist
+xG,Expected Goal
+npxG,Non penalty Expected Goal
+npxG/Sh,Non penalty Expected Goal per shot
+G-xG,Goal minus Expected Goal
+Min,Minutes played
+xG par 90, Expected Goals
+xA par 90, Expected Assists
+Buts de la tête par 90, Headers
+Passes décisives par 90, Assists
+Buts par 90, Goals
+Dribbles par 90, Attempted dribbles
+Courses progressives par 90, Progressives runs
+Accélérations par 90, Accelerations
+Passes progressives par 90, Progressives passes
+Passes dans tiers adverse par 90, Last third passes
+Duels offensifs par 90, Offensive duels
+Touches de balle dans la surface de réparation sur 90, Touches dans la surface
+Fautes subies par 90, Fouled
+Fautes subies, Fouled
+Passes par 90, Passes
+Actions défensives réussies par 90, Defensive actions
+Duels aériens gagnés%, % Aerial duels wons
+Tacles glissés par 90, Slided tackles
+Tacles glissés PAdj, Slided tackles PAdj
+Tirs bloqués par 90, Blocked shots
+Interceptions par 90, Interceptions
+Interceptions PAdj, Interceptions PAdj
+Fautes par 90, Fouls
+Cartons jaunes par 90, Yellow cards
+Passes avant par 90, Passes vers l'avant
+Duels défensifs gagnés%, Defensive duels won (%)
+Passes vers la surface de réparation par 90, Passes vers la surface
+Passes quasi décisives par 90, Key passes
+Tirs par 90, Shots
+Duels défensifs par 90, Defensive duels
+Centres par 90, Crosses
+Duels aériens par 90, Aerial duels
+Passes judicieuses par 90, Smart passes
+Passes réceptionnées par 90, Passes received
+Centres du flanc gauche par 90, Crosses from left flank
+?entres du flanc gauche précises%, Cross accuracy from left flank (%)
+Centres dans la surface de but par 90, Crosses to six-yard box
+Passes longues par 90, Long passes
+Attaques réussies par 90, Succesful offensive actions
+Réalisations en profondeur par 90, Deep Completions
+Buts hors penalty par 90, Non-penalty goals
+Passes en avant précises%, Forward pass accuracy (%)
+Taux de conversion but/tir, Goal conversion (%)
+Buts-xG, Finition (Goals - xG)
+Duels par 90, Duels attempted
+Longues passes réceptionnées par 90, Long passes received
+Duels de marquage%, Offensive duels wons (%)
+Passes arrière par 90, Back passes attempted
+Passes latérales par 90, Lateral passes attempted
+Secondes passes décisives par 90, Second assist
+Passes vers la surface de réparation précises%, Passes into penalty area accuracy (%)
+Troisièmes passes décisives par 90, Third assist
+Passes précises%, Pass accuracy (%)
+Passes courtes / moyennes par 90, Short/medium passes attempted
+Passes courtes / moyennes précises%, Short/medium passes accuracy (%)
+Longues passes précises%, Long passes accuracy (%)
+Passes dans tiers adverse précises%, Passes into final third %
+Passes pénétrantes par 90, Penetrative passes attempted
+Passes en profondeur précises%, Deep Completion accuracy (%)
+Tirs contrés par 90, Blocked shots
+Duels gagnés%, Duels wons (%)
+Dribbles réussis%, Successful dribbles (%)
+?entres précises%, Crosses accuracy (%)
+Buts concédés par 90, Against goals
+xG contre par 90, xG against
+Tirs contre par 90, Shots against
+Cages inviolées, Clean-Sheets (%)
+Enregistrer%, Saves (%)
+Sorties par 90, Exits
+Buts évités par 90, Saved goals
+Passes courtes moyennes par 90, Short/medium passes attempted
+Proportion passe avant, Proportion forward passes
+Duels gagnés, Duels wons
+Duels défensifs gagnés, Defensive duels wons
+Duels aériens gagnés, Aerial duels wons
+Dribbles réussis, Successful dribbles
+2eme et 3eme PD, 2nd/3rd assists
+G-xG, Finition
+Passes dangeureuses, Dangerous passes
+Terrain gagné, Field won
+Passes derniers tiers, Passes into final third
+Passes risqués, Risky passes
+Actions décisives, Decisives actions
+Actions décisives attendues, Expected decisives actions
+Centres réussis, Successful crosses
+Proportion passes dangeureuses, Proportion dangerous passes
+Proportion passes risqués, Proportion risky passes
+Proportion passes vers la surface de réparation, Proportion passes into penalty area
+Proportion passe arrières, Proportion back passes
+Proportion passe latérales, Proportion lateral passes
+Proportion passes derniers tiers, Proportion passes into final third
+Proportion passes clés, Proportion key passes
+Proportion passes judicieuses, Proportion smart passes
+Proportion passes pénétrantes, Proportion penetrative passes
+Proportion passes progressives, Proportion progressives passes
+Tirs à la cible%, Shots on target (%)
+Duels offensifs gagnés, Offensive duels won
+Duels offensifs gagnés%, Offensive duels won (%)
+Passes réussies, Successful passes
+Cartons rouges par 90, Red cards
+Buts hors pénalty par 90, Non penalty goals
+Tirs cadrés %, Shots on target (%)
+Passes courtes moyennes réussies %, Short and medium passes accuracy (%=
+Passes longues précises %, Long passes accuracy (%)
+Passes en profondeur précises %, Deep completions accuracy (%)
+Passes en avant précises %, Forward passes accuracy (%)
+Passes progressives précises %, Progressive passes accuracy (%)
+Passes dangereuses, Passes creating danger
+Proportion passes dangereuses, Passes creating danger
+Passes intelligentes précises %, Smart passes accuracy (%)
+Passes réussies %, Passes accuracy (%)
+Duels défensifs gagnés PAdj, Defensive duels won PAdj
+Tirs contrés PAdj, Blocked shots PAdj
+Tirs cadrés, Shots on target
+Duels défensifs gagnés PAdj%, Defensive duels won PAdj%
+Attaques réussies, Successful attacks
+Touches de balle dans la surface de réparation, Touches in the penalty area
+Courses progressives réussies, Progressive runs
+Accélérations réussies, Accelerations
+Passes en avant réussies, Succesful forward passes
+Passes en profondeur réussies, Successful deep completions
+Passes progressives réussies, Successful progressive passes
+Passes intelligentes réussies, Successful smart passes
+Passes vers la surface de réparation réussies, Successful passes into the box
+Création d'occasion, Shots creation
+Passes risquées, Risky passes
+Duels défensifs gagnés PAdj, Defensive duels PAdj
+Passes longues réussies, Successful long passes
+Passes pénétrantes, Through passes
+Fautes commises, Fouls
+Cartons jaunes reçus, Yellow cards
+Minutes jouées, Minutes played
+Buts, Goals 
+Passes décisives, Assists
+P.D attendues, Expected assists
+Fautes, Fouls
+Cartons jaunes, Yellow cards
+Cartons rouges, Red cards
+Récup. de balle, Ball recoveries
+Duels défensifs, Defensive duels
+Duels défensifs %, Defensive duels %
+Duels aériens, Aerial duels
+Duels aériens %, Aerial duels %
+Tacles glissés réussis, Slided tackles
+Dégagements, Clearances
+Pertes de balle, Ball losses
+Hors-jeu, Offsides
+Fautes subies, Fouls suffered
+Duels offensifs, Offensive duels played
+Duels offensifs %, Offensive duels %
+Dribbles tentés, Attempted dribbles
+Dribbles réussis %, Successful dribbles %
+Touches dans la surface, Touches in the penalty area
+Courses progressives, Progressive runs
+Tirs, Shots
+Tirs cadrés, Shots on target 
+Passes reçues, Passes received
+Passes réussies, Successful passes
+Passes en avant, Forward passes
+Passes en arrière, Back passes
+Passes en profondeur, Deep completions
+Passes longues, Long passes
+Passes dernier tiers, Passes into final third
+Passes clés, Key passes
+Buts concédés, Goals conceded
+Tirs contre, Shots against
+Arrêts, Save
+Arrêts réflexes, Save with reflex
+Sorties, Exits
+Pondération passes reçues réussies, Weighted passes received
+Pondération passes réussies, Weighted successful passes
+Pondération passes en avant réussies, Weighted forward passes
+Pondération passes latérales réussies, Weighted lateral passes
+Pondération passes progressives réussies, Weighted progressive passes
+Pondération passes arrières réussies, Weighted back passes
+Pondération passes en profondeur réussies, Weighted deep completions
+Pondération passes longues réussies, Weighted long passes
+Pondération passes derniers tiers réussies, Weighted passes into final third

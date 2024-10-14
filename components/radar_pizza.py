@@ -3,7 +3,7 @@ from functions.functions_radar_pizza import ui_rename_dict, filter_inputs, prepa
 
 def show():
     # Charger les données des joueurs
-    df = load_data("data/Monde.csv")
+    df = load_data("data/Monde_2024.csv")
 
     # Interface utilisateur pour filtrer par ligue et joueur
     st.title("Radar Pizza - Analyse des joueurs")

@@ -189,6 +189,9 @@ def filter_by_position(joueurs_echantillon, premier_poste):
     elif premier_poste in ["DMF", "LDMF", "RDMF", "LCMF", "RCMF"]:
         postes_to_compare = 'Milieux centraux'
         joueurs_echantillon = joueurs_echantillon[joueurs_echantillon['Premier poste'].isin(['DMF', 'LDMF', 'RDMF', 'LCMF', 'RCMF'])]
+    elif premier_poste in ["DMF", "LDMF", "RDMF"]:
+        postes_to_compare = 'Milieux défensifs'
+        joueurs_echantillon = joueurs_echantillon[joueurs_echantillon['Premier poste'].isin(['DMF', 'LDMF', 'RDMF'])]
     elif premier_poste in ["LWB", "LB", "RWB", "RB"]:
         postes_to_compare = 'Latéraux'
         joueurs_echantillon = joueurs_echantillon[joueurs_echantillon['Premier poste'].isin(['LWB', 'LB', 'RWB', 'RB'])]
